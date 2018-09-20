@@ -1,0 +1,15 @@
+---
+- name: Deploy PostgreSQL
+  user: centos
+  hosts: database*
+  tasks:
+    - name: Echo role
+      shell: echo "Database"
+
+- name: Deploy Tower stack
+  user: centos
+  hosts: tower*
+  tasks:
+    - name: Echo role
+      shell: echo "Tower"
+
