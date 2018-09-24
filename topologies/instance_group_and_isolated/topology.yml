@@ -52,7 +52,7 @@ securitygroups:
         to_port: 25673
 
 servers:
-  - name: tower-1-ctd
+  - name: tower-1-igi
     sshkey: tower-spredzy
     image: '{{ server_image }}'
     region: '{{ server_region }}'
@@ -65,7 +65,7 @@ servers:
     meta:
       group: tower
 
-  - name: tower-2-ctd
+  - name: tower-2-igi
     sshkey: tower-spredzy
     image: '{{ server_image }}'
     region: '{{ server_region }}'
@@ -76,9 +76,9 @@ servers:
       - tower-rabbitmq
       - tower-ssh
     meta:
-      group: tower
+      group: instance_group_1
 
-  - name: tower-3-ctd
+  - name: tower-3-igi
     sshkey: tower-spredzy
     image: '{{ server_image }}'
     region: '{{ server_region }}'
@@ -89,9 +89,31 @@ servers:
       - tower-rabbitmq
       - tower-ssh
     meta:
-      group: tower
+      group: instance_group_1
 
-  - name: database-ctd
+  - name: isolated-1-igi
+    sshkey: tower-spredzy
+    image: '{{ server_image }}'
+    region: '{{ server_region }}'
+    flavor: '{{ server_flavor }}'
+    network: tower
+    security_groups:
+      - tower-ssh
+    meta:
+      group: isolated_group_1
+
+  - name: isolated-2-igi
+    sshkey: tower-spredzy
+    image: '{{ server_image }}'
+    region: '{{ server_region }}'
+    flavor: '{{ server_flavor }}'
+    network: tower
+    security_groups:
+      - tower-ssh
+    meta:
+      group: isolated_group_1
+
+  - name: database-igi
     sshkey: tower-spredzy
     image: '{{ server_image }}'
     region: '{{ server_region }}'
